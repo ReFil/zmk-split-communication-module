@@ -1,0 +1,27 @@
+
+
+config ZMK_SPLIT_EXTRA_COMMUNICATION
+    bool "Enable extra communication pipeline"
+    depends on (ZMK_SPLIT_BLE && !ZMK_SPLIT_PERIPHERAL_HID_INDICATORS)
+
+if ZMK_SPLIT_EXTRA_COMMUNICATION
+
+config ZMK_SPLIT_EXTRA_COMMUNICATION_STACK_SIZE
+    int "BLE split central to peripheral thread stack size"
+    default 512
+
+config ZMK_SPLIT_EXTRA_COMMUNICATION_QUEUE_SIZE
+    int "Max number of data transfer requests to queue to send to the peripheral(s)"
+    default 5
+
+config ZMK_SPLIT_EXTRA_COMMUNICATION_CENTRAL
+    bool "Central"
+    default y
+    depends on ZMK_SPLIT_ROLE_CENTRAL
+
+config ZMK_SPLIT_EXTRA_COMMUNICATION_PERIPHERAL
+    bool "Peripheral"
+    default y
+    depends on !ZMK_SPLIT_ROLE_CENTRAL
+
+endif
