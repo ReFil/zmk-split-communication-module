@@ -13,6 +13,7 @@ if (CONFIG_ZMK_SPLIT_EXTRA_COMMUNICATION)
 
     if (ZMK_SPLIT_EXTRA_COMMUNICATION_PERIPHERAL)
         zephyr_library_sources(src/split_extra_communication_peripheral.c)
+        zephyr_library_sources(src/split_extra_communication_event_raiser.c)
     endif()
 
 endif()
